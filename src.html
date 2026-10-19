@@ -1,0 +1,1123 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>trainin.ma — Former vos équipes à l’IA, mesurer ce qui change</title>
+<meta name="description" content="Formations à l’IA en présentiel pour les entreprises au Maroc&#8239;: des matinées de pratique dans vos locaux, et le temps et la qualité mesurés sur les tâches de vos équipes, avant, à la fin et 90&nbsp;jours après.">
+<meta name="claude:viewport-fit-sides" content="cover">
+<script>(function(d){var r=d.documentElement;r.lang="fr";r.classList.add("js");try{if("IntersectionObserver" in window&&!window.matchMedia("(prefers-reduced-motion: reduce)").matches){r.classList.add("rv")}}catch(e){}})(document);</script>
+<!--
+  trainin.ma — homepage, version 2 (16 Oct 2026), rewritten after a first-visitor review.
+  Still to fill before going live (each one is marked on the page with class="todo"):
+    - the hero photo: each slot is a <div class="photo-frame" data-alt="…">; replace it with
+      <img src="…" alt="(the data-alt text)" width="…" height="…" loading="lazy">, 4:5 crop;
+    - contact: an e-mail address and a phone or WhatsApp number;
+    - the form: set data-endpoint on #contact-form to the address that receives requests;
+    - legal mentions once the company is registered: RC, ICE, IF, CNDP declaration number,
+      plus a privacy policy page (the form collects personal data);
+    - spelling of both founders' names, and who answers requests (now: Oussama).
+  Font: Google Sans Flex (SIL OFL 1.1), cut to the characters and axes this page uses, with the
+  arrow (U+2192) built from the font's own minus and greater-than; one file, inlined below.
+-->
+<style>
+/*@FONT@*/
+/* Layout: an editorial 12-column page. Section labels sit in a margin column (1–3), content in 4–12,
+   sections are divided by hairlines. The hero pairs the headline with a photo; the sample report sits in the method section. */
+:root{
+  --paper:#F5F2EC;
+  --paper-deep:#ECE7DF;
+  --ink:#171614;
+  --ink-2:#3A3732;
+  --muted:#6B665E;
+  --rule:#DAD4CA;
+  --accent:#1F3354;
+  --accent-hover:#2A4470;
+  --on-ink-muted:#A8A296;
+  --vert:#2E6A4E;
+  --ambre:#8F5A0E;
+  --rouge:#9E3B30;
+  --sheet:#FBFAF7;
+
+  --font:"Google Sans Flex", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+  --fs-h1:clamp(44px, 6.2vw, 92px);
+  --fs-h2:clamp(32px, 3.8vw, 56px);
+  --fs-h3:clamp(21px, 1.8vw, 26px);
+  --fs-lead:clamp(19px, 1.6vw, 23px);
+  --fs-body:clamp(17px, 1.2vw, 18px);
+  /* The font has no grade axis: on the ink band, text drops a few weight units instead. */
+  --g:0;
+
+  --gutter:24px;
+  --pad-x:clamp(20px, 5vw, 64px);
+  --section-y:clamp(80px, 9vw, 136px);
+  --radius:14px;
+  --radius-sm:8px;
+  --container:1240px;
+  --header-h:72px;
+  color-scheme:light;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:calc(var(--header-h) + 24px);-webkit-text-size-adjust:100%;text-size-adjust:100%}
+html.menu-open{overflow:hidden}
+body{margin:0;background:var(--paper);color:var(--ink-2);font-family:var(--font);font-size:var(--fs-body);font-weight:400;line-height:1.65;font-optical-sizing:auto;font-variant-numeric:tabular-nums;font-variant-ligatures:common-ligatures contextual no-discretionary-ligatures;font-kerning:normal;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--paper)}
+h1,h2,h3,p,ul,ol,dl,dd,figure,blockquote{margin:0}
+ul,ol{padding:0;list-style:none}
+a{color:inherit}
+.nw{white-space:nowrap}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+/* ---------- grid ---------- */
+.wrap{width:100%;max-width:calc(var(--container) + 2 * var(--pad-x));margin-inline:auto;padding-left:max(var(--pad-x), env(safe-area-inset-left,0px));padding-right:max(var(--pad-x), env(safe-area-inset-right,0px))}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gutter)}
+.hairline{height:1px;background:var(--rule)}
+.sec>.wrap{padding-block:var(--section-y)}
+.sec-label{grid-column:1 / 4;padding-top:calc((var(--fs-h2) * 1.08 - 18.2px) / 2)}
+.sec-body{grid-column:4 / 13;min-width:0;display:grid;gap:56px;align-content:start}
+.sec-head{display:grid;gap:24px}
+.band--deep{background:var(--paper-deep)}
+
+/* ---------- type ---------- */
+h1,h2{color:var(--ink);font-stretch:94%;text-wrap:balance;-webkit-hyphens:manual;hyphens:manual}
+h1{font-size:var(--fs-h1);font-weight:calc(360 + var(--g));line-height:1.02;letter-spacing:-0.03em}
+h2{font-size:var(--fs-h2);font-weight:calc(380 + var(--g));line-height:1.08;letter-spacing:-0.02em}
+h3{font-size:var(--fs-h3);font-weight:calc(500 + var(--g));line-height:1.25;letter-spacing:-0.01em;color:var(--ink);text-wrap:balance;-webkit-hyphens:manual;hyphens:manual}
+p,li,dd{text-wrap:pretty}
+/* Measured in this font, 29em of running text holds at most about 66 characters a line. */
+.lead{font-size:var(--fs-lead);line-height:1.5;max-width:28em}
+.body{max-width:29em}
+.label{font-size:13px;font-weight:calc(500 + var(--g));line-height:1.4;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.caption{font-size:14px;line-height:1.5;letter-spacing:.01em;color:var(--muted)}
+.todo{color:var(--rouge);text-decoration:underline dashed var(--rouge);text-decoration-thickness:1px;text-underline-offset:4px}
+
+/* ---------- links and buttons ---------- */
+.link{color:var(--ink-2);text-decoration:underline;text-decoration-thickness:1px;text-decoration-color:var(--rule);text-underline-offset:4px;transition:color 150ms ease,text-decoration-color 150ms ease}
+.link:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.link--solo{display:inline-flex;align-items:center;min-height:44px;justify-self:start;align-self:start}
+.btn{display:inline-flex;align-items:center;justify-content:center;border-radius:var(--radius-sm);font-family:inherit;font-size:16px;font-weight:calc(500 + var(--g));line-height:1;letter-spacing:.01em;text-decoration:none;white-space:nowrap;cursor:pointer;transition:background-color 150ms ease,color 150ms ease,border-color 150ms ease}
+.btn--primary{height:56px;padding:0 32px;border:0;background:var(--accent);color:var(--paper)}
+.btn--primary:hover{background:var(--accent-hover)}
+.btn--outline{position:relative;height:40px;padding:0 20px;border:1px solid var(--ink);background:transparent;color:var(--ink)}
+.btn--outline::after{content:"";position:absolute;inset:-3px -1px}
+.btn--outline:hover{border-color:var(--accent);color:var(--accent)}
+
+/* ---------- header ---------- */
+.site-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper)}
+.site-header::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:transparent;transition:background-color 150ms ease}
+.site-header.is-scrolled::after{background:var(--rule)}
+.header-bar{height:var(--header-h);display:grid;grid-template-columns:calc((100% + var(--gutter)) / 4 - var(--gutter)) 1fr auto;column-gap:var(--gutter);align-items:center}
+.wordmark{justify-self:start;display:inline-flex;align-items:center;min-height:44px;font-size:20px;font-weight:calc(500 + var(--g));font-stretch:90%;letter-spacing:-0.01em;line-height:1;color:var(--ink);text-decoration:none}
+.nav ul{display:flex;gap:32px}
+.nav a{display:inline-flex;align-items:center;min-height:44px;font-size:15px;color:var(--ink-2);text-decoration:none;transition:color 150ms ease}
+.nav a:hover{color:var(--accent)}
+.menu-toggle{display:none;min-height:44px;padding:0 2px;border:0;background:none;font:inherit;font-size:16px;font-weight:500;color:var(--ink);cursor:pointer;text-decoration:underline;text-decoration-thickness:1px;text-decoration-color:var(--rule);text-underline-offset:4px}
+.menu-panel{position:fixed;inset:0;z-index:15;overflow-y:auto;background:var(--paper);padding-top:calc(env(safe-area-inset-top,0px) + var(--header-h))}
+.menu-panel nav{padding-block:16px 48px}
+.menu-panel li{border-bottom:1px solid var(--rule)}
+.menu-panel li:first-child{border-top:1px solid var(--rule)}
+.menu-panel li a{display:flex;align-items:center;min-height:68px;font-size:32px;font-weight:380;font-stretch:94%;letter-spacing:-0.02em;color:var(--ink);text-decoration:none}
+.menu-panel .btn{width:100%;margin-top:32px}
+
+/* ---------- hero ---------- */
+.hero-wrap{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gutter);align-items:center;min-height:clamp(560px, 88vh, 1040px);padding-block:56px 72px}
+.hero-text{grid-column:1 / 7;display:grid;gap:24px;container-type:inline-size}
+.h1-line{display:block;text-wrap:balance}
+.hero-text .lead{max-width:24em}
+.hero-cta{margin-top:12px;display:grid;grid-template-columns:auto 1fr;grid-template-areas:"btn link" "note note";column-gap:28px;row-gap:12px;align-items:center}
+.hero-cta .btn{grid-area:btn}
+.hero-cta .link{grid-area:link;align-self:center}
+.hero-note{grid-area:note;max-width:34em}
+@container (max-width:559px){
+  .hero-cta{grid-template-columns:minmax(0,1fr);grid-template-areas:"btn" "note" "link"}
+  .hero-cta .btn{justify-self:start}
+}
+.hero{position:relative}
+.hero-photo{position:absolute;top:0;right:0;bottom:0;height:100%;aspect-ratio:4 / 5;max-width:calc(50% - var(--gutter) / 2)}
+.hero-photo .photo-frame{height:100%}
+.sample{display:grid;grid-template-columns:minmax(0,440px) minmax(0,1fr);column-gap:calc(var(--gutter) * 2);row-gap:22px;align-items:end}
+.sample figcaption{max-width:24em}
+
+/* ---------- the sample report ---------- */
+.sheet{position:relative;display:flex;flex-direction:column;gap:18px;width:100%;min-width:0;aspect-ratio:210 / 297;padding:34px 36px 30px;background:var(--sheet);border:1px solid var(--rule);box-shadow:0 1px 2px rgb(23 22 20 / 6%),0 16px 40px rgb(23 22 20 / 6%);rotate:-1.5deg;color:var(--ink-2)}
+/* Small capitals drawn by hand (the font has no small-caps feature). */
+.sheet-flag{padding-bottom:12px;border-bottom:1px solid var(--rule);font-size:12px;font-weight:600;line-height:1.5;letter-spacing:.08em;color:var(--rouge)}
+.sheet-flag .sc{font-size:.8em;font-weight:660;letter-spacing:.1em;text-transform:uppercase}
+.sheet-head{display:grid;gap:5px}
+.sheet-title{font-size:15.5px;font-weight:500;line-height:1.35;color:var(--ink)}
+.sheet-meta{font-size:13px;line-height:1.45;color:var(--muted)}
+.sheet-big{display:grid;gap:4px}
+.sheet-big-num{font-size:56px;font-weight:280;font-stretch:94%;line-height:1;letter-spacing:-0.03em;color:var(--ink)}
+.sheet-big-text{font-size:17px;line-height:1.35;color:var(--ink-2)}
+.sheet-stat{display:grid;gap:12px}
+.sheet-stat>p{font-size:13px;line-height:1.5}
+.whisker{display:grid;gap:5px}
+.w-plot{position:relative;height:20px}
+.w-plot::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--rule)}
+.w-tick{position:absolute;top:calc(50% - 3px);width:1px;height:7px;background:var(--rule)}
+.w-range{position:absolute;top:50%;height:2px;margin-top:-1px;background:var(--ink)}
+.w-range::before,.w-range::after{content:"";position:absolute;top:-5px;width:2px;height:12px;background:var(--ink)}
+.w-range::before{left:0}
+.w-range::after{right:0}
+.w-dot{position:absolute;top:50%;width:11px;height:11px;margin:-5.5px 0 0 -5.5px;border-radius:50%;background:var(--ink)}
+.w-axis{position:relative;height:16px}
+.w-axis span{position:absolute;top:0;font-size:11.5px;line-height:1.4;color:var(--muted);white-space:nowrap;translate:-50% 0}
+.w-axis span:first-child{translate:0 0}
+.w-axis span:last-child{translate:-100% 0}
+.bars{display:grid;gap:7px}
+.bar-row{display:grid;grid-template-columns:4.6em minmax(0,1fr) 2.2em;align-items:center;column-gap:10px;font-size:11.5px;line-height:1.4;color:var(--muted)}
+.bar-track{position:relative;height:7px}
+.bar-track::before{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:var(--rule)}
+.bar{position:relative;display:block;height:7px;background:var(--muted)}
+.bar--accent{background:var(--accent)}
+.bar-val{text-align:right;color:var(--ink-2)}
+.sheet-note{display:grid;gap:5px;padding:13px 15px;border:1px solid var(--rule)}
+.sheet-note p{font-size:12.5px;line-height:1.5}
+.sheet-note-title{font-weight:600;color:var(--ink)}
+.sheet-sign{margin-top:auto;display:grid;gap:28px}
+.sheet-sign p{font-size:12.5px;line-height:1.5;color:var(--muted)}
+.sheet-sign-line{display:block;width:62%;height:1px;background:var(--rule)}
+
+/* ---------- la méthode ---------- */
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--gutter);border-top:1px solid var(--muted)}
+.steps>li{position:relative;grid-row:span 3;display:grid;grid-template-rows:subgrid;row-gap:10px;align-content:start;padding-top:32px;padding-right:12px}
+.steps>li::before{content:"";position:absolute;top:-4.5px;left:0;width:8px;height:8px;border-radius:50%;background:var(--ink)}
+.steps h3{margin-bottom:6px}
+.step-list li{padding-block:10px;border-top:1px solid var(--rule);font-size:16px;line-height:1.55}
+.effort{display:grid;gap:12px}
+.effort>dl>div{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);column-gap:var(--gutter);row-gap:4px;padding-block:16px;border-top:1px solid var(--rule)}
+.effort dt{font-weight:500;color:var(--ink)}
+.effort dd{max-width:29em}
+
+/* ---------- la confiance ---------- */
+.rules>li{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,5fr);column-gap:var(--gutter);row-gap:8px;padding-block:28px;border-top:1px solid var(--rule)}
+.rules p{max-width:29em}
+
+/* ---------- les programmes ---------- */
+.prog{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,5fr);column-gap:var(--gutter);row-gap:16px;padding-block:32px 28px;border-top:1px solid var(--ink)}
+.prog-id{display:grid;gap:8px;align-content:start}
+.meta{font-size:14px;line-height:1.5;color:var(--muted)}
+.prog-main{display:grid;gap:16px;align-content:start}
+.prog-lead{font-size:var(--fs-lead);line-height:1.45;color:var(--ink-2)}
+.disclosure{border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.disclosure summary{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:48px;cursor:pointer;list-style:none;font-size:16px;font-weight:500;color:var(--ink);transition:color 150ms ease}
+.disclosure summary::-webkit-details-marker{display:none}
+.disclosure summary::after{content:"+";flex:none;width:24px;text-align:center;font-size:24px;font-weight:300;line-height:1}
+.disclosure[open] summary::after{content:"\2212"}
+.disclosure summary:hover{color:var(--accent)}
+.numbered{counter-reset:item;padding-bottom:10px}
+.numbered li{counter-increment:item;display:grid;grid-template-columns:2em minmax(0,1fr);column-gap:8px;padding-block:9px;border-top:1px solid var(--rule);font-size:16px;line-height:1.55}
+.numbered li::before{content:counter(item);color:var(--muted)}
+.numbered strong{font-weight:600;color:var(--ink)}
+.checklist{display:grid;gap:14px;padding:28px 28px 22px;background:var(--sheet);border:1px solid var(--rule);border-radius:var(--radius)}
+.checklist>.body{padding-top:16px;border-top:1px solid var(--rule)}
+.checklist ul{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--gutter)}
+.checklist li{padding-block:14px;border-top:1px solid var(--rule)}
+
+/* ---------- en séance ---------- */
+.morning{display:grid;gap:12px}
+.morning-axis{position:relative;height:20px}
+.morning-axis span{position:absolute;top:0;font-size:12px;line-height:1.6;color:var(--muted);white-space:nowrap;translate:-50% 0}
+.morning-axis span:first-child{translate:0 0}
+.morning-axis span:last-child{translate:-100% 0}
+.morning-bar{display:flex;height:40px}
+.morning-bar li{flex:0 0 calc(var(--m) / 210 * 100%);border-right:2px solid var(--paper)}
+.morning-bar li:last-child{border-right:0}
+.m-pratique{background:var(--ink)}
+.m-expli{background:var(--muted)}
+.m-autre{background:var(--rule)}
+.morning-legend{display:flex;flex-wrap:wrap;gap:6px 28px;font-size:14px;line-height:1.5;color:var(--ink-2)}
+.morning-legend li{display:flex;align-items:center;gap:8px}
+.sw{flex:none;width:12px;height:12px}
+.schedule{padding-bottom:10px}
+.schedule li{display:grid;grid-template-columns:4.6em minmax(0,1fr) auto;column-gap:12px;padding-block:8px;border-top:1px solid var(--rule);font-size:16px;line-height:1.5}
+.schedule .t,.schedule .d{color:var(--muted)}
+
+/* ---------- secteurs ---------- */
+.sectors{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--gutter);row-gap:var(--gutter)}
+.sector{grid-row:span 3;display:grid;grid-template-rows:subgrid;row-gap:16px;align-content:start;padding:26px 24px 28px;background:var(--sheet);border:1px solid var(--rule);border-radius:var(--radius)}
+.sector li{padding-block:12px;border-top:1px solid var(--rule);text-wrap:balance}
+.sector li:last-child{border-bottom:1px solid var(--rule)}
+.example{display:grid;gap:6px;align-content:start}
+.example p:last-child{font-size:16px;line-height:1.55}
+
+/* ---------- vos données ---------- */
+.lights{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:var(--gutter);row-gap:var(--gutter)}
+.light{display:grid;gap:10px;align-content:start;padding:22px 24px 24px;background:var(--sheet);border:1px solid var(--rule);border-top:3px solid var(--light, var(--rule));border-radius:var(--radius)}
+.light--vert{--light:var(--vert)}
+.light--ambre{--light:var(--ambre)}
+.light--rouge{--light:var(--rouge)}
+.light h3{display:flex;align-items:center;gap:12px}
+.dot{flex:none;width:10px;height:10px;border-radius:50%}
+.dot--vert{background:var(--vert)}
+.dot--ambre{background:var(--ambre)}
+.dot--rouge{background:var(--rouge)}
+.commitments li{padding-block:18px}
+.commitments li+li{border-top:1px solid var(--rule)}
+.commitments li:first-child{padding-top:0}
+
+/* ---------- les fondateurs ---------- */
+/* Shared photo on top, then one card per founder: Riyad left (as in the photo), Oussama right. */
+.founders{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"photo photo" "a b";column-gap:var(--gutter);row-gap:var(--gutter);align-items:stretch}
+.founder{display:flex;flex-direction:column;gap:14px;padding:28px 26px 24px;background:var(--sheet);border:1px solid var(--rule);border-radius:var(--radius)}
+.founder-head{display:grid;gap:4px}
+.founder-job{font-size:15px;font-weight:500;line-height:1.4;color:var(--accent)}
+.founder .label{margin-top:6px;font-size:11.5px}
+.degrees{list-style:none;padding:0;display:grid}
+.degrees li{display:grid;grid-template-rows:46px auto auto;gap:3px;padding-block:14px;border-top:1px solid var(--rule)}
+.degrees li:last-child{border-bottom:1px solid var(--rule)}
+.deg-logo{display:block;width:auto;height:var(--logo-h, 32px);max-width:100%;margin-bottom:8px;align-self:center;object-fit:contain;object-position:left center}
+.deg-title{font-size:15.5px;font-weight:500;line-height:1.4;color:var(--ink)}
+.deg-school{font-size:13.5px;line-height:1.45;color:var(--muted)}
+.founder-link{align-self:flex-start;margin-top:auto;padding-top:6px;font-size:14px}
+.founders>article:first-of-type{grid-area:a}
+.founders>article:last-of-type{grid-area:b}
+.founders-photo{grid-area:photo;justify-self:center;width:min(100%, 560px);margin-bottom:16px}
+.founders-photo img{display:block;width:100%;height:auto;aspect-ratio:4 / 3;object-fit:cover;border-radius:var(--radius);background:var(--paper-deep)}
+.founder .role{font-size:14px;line-height:1.5;color:var(--muted)}
+.photo-frame{width:100%;background:var(--paper-deep);display:flex;align-items:flex-end;padding:20px}
+.photo-todo{margin:0;font-size:14px;line-height:1.5;color:var(--muted);max-width:24em}
+
+/* ---------- questions ---------- */
+.faq{border-top:1px solid var(--rule)}
+.faq-item{border-bottom:1px solid var(--rule)}
+.faq-h{font-size:20px;font-weight:calc(450 + var(--g));line-height:1.35}
+.faq-q{width:100%;min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:22px 0;border:0;background:none;font:inherit;color:var(--ink);text-align:left;cursor:pointer}
+.faq-icon{flex:none;width:24px;text-align:center;font-size:28px;font-weight:300;line-height:1;color:var(--ink)}
+.faq-icon::before{content:"+"}
+.faq-q[aria-expanded="true"] .faq-icon::before{content:"\2212"}
+.faq-a>div{overflow:hidden;min-height:0}
+.faq-a p{max-width:29em;padding-bottom:26px}
+.js .faq-a{display:grid;grid-template-rows:0fr;visibility:hidden;transition:grid-template-rows 200ms ease,visibility 0s linear 200ms}
+.js .faq-a.is-open{grid-template-rows:1fr;visibility:visible;transition:grid-template-rows 200ms ease,visibility 0s linear 0s}
+
+/* ---------- contact and footer (ink) ---------- */
+.ink{--g:-12;background:var(--ink);color:var(--paper);font-weight:calc(400 + var(--g))}
+.ink :focus-visible{outline-color:var(--paper)}
+.ink .todo{color:var(--paper);text-decoration-color:var(--rouge)}
+.ink .btn--primary{background:var(--paper);color:var(--ink)}
+.ink .btn--primary:hover{background:var(--paper-deep)}
+.contact>.wrap{padding-block:var(--section-y)}
+.contact-grid{row-gap:56px}
+.contact-intro{grid-column:1 / 6;display:grid;gap:24px;align-content:start}
+.contact h2{font-size:clamp(36px, 4.6vw, 66px);font-weight:calc(360 + var(--g));line-height:1.04;letter-spacing:-0.03em;color:var(--paper)}
+.contact .lead{color:var(--on-ink-muted)}
+.next-steps{counter-reset:item;border-bottom:1px solid var(--ink-2)}
+.next-steps li{counter-increment:item;display:grid;grid-template-columns:2em minmax(0,1fr);column-gap:8px;padding-block:14px;border-top:1px solid var(--ink-2);font-size:16px;line-height:1.55;color:var(--paper)}
+.next-steps li::before{content:counter(item);color:var(--on-ink-muted)}
+.contact-small{font-size:14px;line-height:1.6;color:var(--on-ink-muted)}
+.contact-form{grid-column:7 / 13;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--gutter);row-gap:20px;align-content:start;color-scheme:dark}
+.field{display:grid;gap:8px;align-content:start;min-width:0}
+.field--wide,.form-privacy,.form-actions,.form-status{grid-column:1 / -1}
+.field label{font-size:14px;line-height:1.4;color:var(--paper)}
+.opt{color:var(--on-ink-muted)}
+.contact-form input,.contact-form select,.contact-form textarea{width:100%;min-height:48px;padding:11px 14px;border:1px solid var(--on-ink-muted);border-radius:var(--radius-sm);background:var(--ink);color:var(--paper);font:inherit;font-size:16px;line-height:1.4}
+.contact-form textarea{min-height:124px;resize:vertical}
+.contact-form input:focus-visible,.contact-form select:focus-visible,.contact-form textarea:focus-visible{outline:2px solid var(--paper);outline-offset:2px}
+.contact-form [aria-invalid="true"]{border:2px solid var(--paper)}
+.select{position:relative;display:block}
+.select select{-webkit-appearance:none;appearance:none;padding-right:44px;cursor:pointer}
+.select select option{background:var(--ink);color:var(--paper)}
+.select::after{content:"";position:absolute;top:50%;right:18px;width:7px;height:7px;border-right:1.5px solid var(--paper);border-bottom:1.5px solid var(--paper);rotate:45deg;translate:0 -70%;pointer-events:none}
+.field-err{font-size:13px;line-height:1.4;color:var(--paper)}
+.field-err:empty{display:none}
+.form-privacy{font-size:13px;line-height:1.55;color:var(--on-ink-muted)}
+.form-status{font-size:15px;line-height:1.55;color:var(--paper)}
+.form-status:empty{display:none}
+.footer-bar{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gutter);row-gap:20px;padding-block:48px 64px;border-top:1px solid var(--ink-2)}
+.site-footer .wordmark{grid-column:1 / 4;align-self:start;color:var(--paper)}
+.footer-nav{grid-column:4 / 13}
+.footer-nav ul{display:flex;flex-wrap:wrap;column-gap:28px}
+.footer-nav a{display:inline-flex;align-items:center;min-height:44px;font-size:15px;color:var(--paper);text-decoration:underline;text-decoration-thickness:1px;text-decoration-color:var(--ink-2);text-underline-offset:4px;transition:text-decoration-color 150ms ease}
+.footer-nav a:hover{text-decoration-color:var(--paper)}
+.legal{grid-column:4 / 13;font-size:13px;line-height:1.5;color:var(--on-ink-muted)}
+
+/* ---------- one motion: fade and rise, once ---------- */
+@media (prefers-reduced-motion:no-preference){
+  .rv [data-reveal]{transition:opacity 500ms ease-out,translate 500ms ease-out;transition-delay:calc(var(--i, 0) * 60ms)}
+  .rv [data-reveal]:not(.is-in){opacity:0;translate:0 8px}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{transition-duration:0s !important;transition-delay:0s !important;animation:none !important;scroll-behavior:auto !important}
+}
+
+/* ---------- below desktop ---------- */
+@media (max-width:1023px){
+  .header-bar{grid-template-columns:1fr auto}
+  .nav,.header-cta{display:none}
+  .menu-toggle{display:inline-flex;align-items:center}
+  .sec-label,.sec-body{grid-column:1 / -1}
+  .sec-label{padding-top:0;margin-bottom:16px}
+  .hero-wrap{display:block;min-height:0;padding-block:48px 72px}
+  .hero-photo{position:relative;width:min(100%, 600px);height:auto;max-width:none;margin-left:auto}
+  .hero-photo .photo-frame{aspect-ratio:4 / 5;height:auto}
+  .sample{grid-template-columns:minmax(0,1fr)}
+  .sample .sheet{width:min(100% - 12px, 460px);margin-inline:auto}
+  .contact-intro,.contact-form{grid-column:1 / -1}
+  .site-footer .wordmark,.footer-nav,.legal{grid-column:1 / -1}
+}
+@media (min-width:1024px){
+  .menu-panel{display:none !important}
+}
+@media (max-width:639px){
+  .btn--primary{width:100%}
+  .steps{grid-template-columns:minmax(0,1fr);row-gap:40px;margin-left:4px;padding-left:28px;border-top:0;border-left:1px solid var(--muted)}
+  .steps>li{padding-top:0;padding-right:0}
+  .steps>li::before{top:5px;left:-32.5px}
+  .sheet{padding:26px 22px 24px}
+  .effort>dl>div,.rules>li,.prog{grid-template-columns:minmax(0,1fr)}
+  .checklist ul,.sectors,.lights,.contact-form{grid-template-columns:minmax(0,1fr)}
+  .founders{grid-template-columns:minmax(0,1fr);grid-template-areas:"photo" "a" "b"}
+  .schedule li{grid-template-columns:4.2em minmax(0,1fr)}
+  .schedule .d{grid-column:2}
+  .morning-axis .ax-minor{display:none}
+}
+@media print{
+  .rv [data-reveal]{opacity:1 !important;translate:none !important}
+  .site-header{position:static}
+  .menu-panel{display:none !important}
+}
+</style>
+
+<div class="page" lang="fr">
+<header class="site-header" data-header>
+  <div class="wrap header-bar">
+    <a class="wordmark" href="#">trainin.ma</a>
+    <nav class="nav" aria-label="Navigation principale">
+      <ul>
+        <li><a href="#methode">Méthode</a></li>
+        <li><a href="#programmes">Programmes</a></li>
+        <li><a href="#questions">Questions</a></li>
+        <li><a href="#fondateurs">Fondateurs</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn--outline header-cta" href="#contact">Prendre rendez-vous</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" data-menu-toggle>Menu</button>
+  </div>
+</header>
+
+<div class="menu-panel" id="menu" hidden>
+  <div class="wrap">
+    <nav aria-label="Menu">
+      <ul>
+        <li><a href="#methode">Méthode</a></li>
+        <li><a href="#programmes">Programmes</a></li>
+        <li><a href="#questions">Questions</a></li>
+        <li><a href="#fondateurs">Fondateurs</a></li>
+      </ul>
+      <a class="btn btn--primary" href="#contact">Prendre rendez-vous</a>
+    </nav>
+  </div>
+</div>
+
+<main>
+
+  <!-- Hero -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-wrap">
+      <div class="hero-text" data-reveal>
+        <p class="label">Formation à l’IA en présentiel&nbsp;· Entreprises au Maroc</p>
+        <h1 id="hero-title"><span class="h1-line">Former vos équipes à l’IA.</span> <span class="h1-line">Mesurer ce qui change.</span></h1>
+        <p class="lead">Des matinées de pratique dans vos locaux, et une mesure du temps et de la qualité sur les tâches de vos équipes&#8239;: avant, à la fin et 90&nbsp;jours après. Si le gain est nul, le rapport le dit.</p>
+        <div class="hero-cta">
+          <a class="btn btn--primary" href="#contact">Prendre rendez-vous</a>
+          <p class="caption hero-note">45&nbsp;minutes avec un fondateur, gratuit et sans engagement. Vous pouvez venir avec trois ou quatre décideurs.</p>
+          <a class="link link--solo" href="#programmes">Voir les programmes&nbsp;→</a>
+        </div>
+      </div>
+    </div>
+    <figure class="hero-photo" data-reveal style="--i:1">
+      <div class="photo-frame" data-photo="hero" data-alt="Page d’un rapport de mesure posée sur une table de réunion, à côté d’une enveloppe scellée.">
+        <p class="photo-todo">Photo à venir&#8239;: une page de rapport de mesure sur une table de réunion, à côté d’une enveloppe scellée</p>
+      </div>
+    </figure>
+  </section>
+
+  <div class="wrap"><div class="hairline"></div></div>
+
+  <!-- Le constat -->
+  <section class="sec" id="constat" aria-labelledby="constat-title">
+    <div class="wrap grid">
+      <p class="label sec-label" data-reveal>Le constat</p>
+      <div class="sec-body" data-reveal style="--i:1">
+        <div class="sec-head">
+          <h2 id="constat-title">L’IA est déjà dans vos bureaux.</h2>
+          <p class="body">Vos collaborateurs s’en servent probablement déjà, avec leurs propres comptes et sans règles communes&#8239;: un <span class="nw">e-mail</span> client collé dans un outil personnel, un résumé que personne ne relit, un gain de temps que personne ne peut chiffrer. Une formation sérieuse leur apprend à s’en servir sans exposer vos données. Une mesure honnête vous dit ce que cela change, en minutes et en qualité.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- La méthode -->
+  <section class="sec band--deep" id="methode" aria-labelledby="methode-title">
+    <div class="wrap grid">
+      <p class="label sec-label" data-reveal>La méthode</p>
+      <div class="sec-body">
+        <div class="sec-head" data-reveal style="--i:1">
+          <h2 id="methode-title">De la première rencontre au bilan à 90&nbsp;jours.</h2>
+          <p class="lead">Trois mesures sur des tâches que vos équipes font chaque semaine, et deux rapports signés par votre sponsor, le dirigeant qui porte le projet chez vous.</p>
+        </div>
+        <ol class="steps">
+          <li data-reveal style="--i:0">
+            <p class="label">Avant&nbsp;· mesure&nbsp;M0</p>
+            <h3>Cadrer, puis mesurer le point de départ</h3>
+            <ul class="step-list">
+              <li>Un échange de 45&nbsp;minutes, gratuit.</li>
+              <li>Le Briefing Direction&#8239;: une <span class="nw">demi-journée</span> avec votre comité de direction, recommandée.</li>
+              <li>Un atelier de cadrage de 90&nbsp;minutes avec vos responsables et votre DSI&#8239;: les tâches à mesurer, vos outils, le calendrier.</li>
+              <li>Mesure M0&#8239;: chaque participant mesuré réalise deux tâches de son métier, comme aujourd’hui.</li>
+            </ul>
+          </li>
+          <li data-reveal style="--i:1">
+            <p class="label">Pendant&nbsp;· mesure&nbsp;M1</p>
+            <h3>Former, puis mesurer avec et sans IA</h3>
+            <ul class="step-list">
+              <li><span class="nw">6&nbsp;à&nbsp;10&nbsp;matinées</span> dans vos locaux, sur <span class="nw">4&nbsp;à&nbsp;8&nbsp;semaines</span>.</li>
+              <li>Un exercice à chaque séance, et une mise en pratique sur le travail réel entre deux séances.</li>
+              <li>Mesure M1, la dernière semaine&#8239;: deux tâches équivalentes, l’une avec l’IA, l’autre sans.</li>
+              <li>Une présentation des résultats devant vos responsables.</li>
+            </ul>
+          </li>
+          <li data-reveal style="--i:2">
+            <p class="label">Après&nbsp;· mesure&nbsp;M2</p>
+            <h3>Vérifier ce qui reste</h3>
+            <ul class="step-list">
+              <li>Le premier rapport, 15&nbsp;jours après la dernière séance.</li>
+              <li>Une séance de suivi par mois pendant trois mois, en visioconférence.</li>
+              <li>Mesure M2, 90&nbsp;jours après&#8239;: deux nouvelles tâches, en conditions réelles.</li>
+              <li>Le second rapport&#8239;: ce qui est resté, même si c’est peu.</li>
+            </ul>
+          </li>
+        </ol>
+        <figure class="sample" data-reveal>
+          <article class="sheet" aria-labelledby="sheet-title">
+            <p class="sheet-flag">EXEMPLE FICTIF <span class="sc">— données inventées pour illustrer le format</span></p>
+            <div class="sheet-head">
+              <p class="sheet-title" id="sheet-title">Rapport de mesure n°&nbsp;1&nbsp;· Centre de relation client (entreprise fictive)</p>
+              <p class="sheet-meta">Tâche mesurée&#8239;: réponse à une réclamation écrite&nbsp;· 8&nbsp;personnes</p>
+            </div>
+            <p class="sheet-big"><span class="sheet-big-num">7&nbsp;sur&nbsp;8</span> <span class="sheet-big-text">plus rapides avec l’IA</span></p>
+            <div class="sheet-stat">
+              <p>Gain médian&#8239;: 11&nbsp;minutes par réponse. La moitié des personnes gagne entre 8&nbsp;et&nbsp;14&nbsp;minutes.</p>
+              <div class="whisker" aria-hidden="true">
+                <div class="w-plot">
+                  <span class="w-tick" style="left:0"></span>
+                  <span class="w-tick" style="left:25%"></span>
+                  <span class="w-tick" style="left:50%"></span>
+                  <span class="w-tick" style="left:75%"></span>
+                  <span class="w-tick" style="left:calc(100% - 1px)"></span>
+                  <span class="w-range" style="left:40%;width:30%"></span>
+                  <span class="w-dot" style="left:55%"></span>
+                </div>
+                <div class="w-axis"><span style="left:0">0</span><span style="left:25%">5</span><span style="left:50%">10</span><span style="left:75%">15</span><span style="left:100%">20&nbsp;min</span></div>
+              </div>
+            </div>
+            <div class="sheet-stat">
+              <p>Qualité notée à l’aveugle par leurs responsables, sur&nbsp;5&#8239;: 3,4&nbsp;sans IA, 3,6&nbsp;avec IA.</p>
+              <div class="bars" aria-hidden="true">
+                <div class="bar-row"><span>sans IA</span><span class="bar-track"><span class="bar" style="width:68%"></span></span><span class="bar-val">3,4</span></div>
+                <div class="bar-row"><span>avec IA</span><span class="bar-track"><span class="bar bar--accent" style="width:72%"></span></span><span class="bar-val">3,6</span></div>
+              </div>
+            </div>
+            <div class="sheet-note">
+              <p class="sheet-note-title">Ce que ce résultat ne dit pas</p>
+              <p>Mesuré en séance, pas dans le travail quotidien. Huit personnes&#8239;: un petit échantillon. Les réponses rédigées avec l’IA restent reconnaissables par les correcteurs.</p>
+            </div>
+            <div class="sheet-sign">
+              <p>Validé par la directrice des opérations (exemple)</p>
+              <span class="sheet-sign-line" aria-hidden="true"></span>
+            </div>
+          </article>
+          <figcaption class="caption">Exemple fictif du premier rapport. Vos chiffres viendront de vos équipes, même s’ils déçoivent.</figcaption>
+        </figure>
+        <div class="effort" data-reveal>
+          <h3>Ce que nous demandons à vos équipes</h3>
+          <dl>
+            <div><dt>Chaque participant</dt><dd>Les matinées du parcours et 30&nbsp;à&nbsp;45&nbsp;minutes de mise en pratique entre deux séances. Ceux qui sont mesurés réalisent aussi deux tâches à chaque mesure, 30&nbsp;à&nbsp;60&nbsp;minutes en tout.</dd></div>
+            <div><dt>Un coordinateur RH</dt><dd>Environ une journée par mesure, pour le calendrier et les convocations.</dd></div>
+            <div><dt>Un ou deux responsables métier</dt><dd>30&nbsp;minutes pour valider les tâches mesurées, puis 4&nbsp;à&nbsp;6&nbsp;heures de notation à l’aveugle pour le premier rapport, et environ 2&nbsp;heures pour le second.</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- La confiance -->
+  <section class="sec" id="confiance" aria-labelledby="confiance-title">
+    <div class="wrap grid">
+      <p class="label sec-label" data-reveal>La confiance</p>
+      <div class="sec-body">
+        <div class="sec-head" data-reveal style="--i:1">
+          <h2 id="confiance-title">Des chiffres que vous pouvez vérifier.</h2>
+          <p class="lead">Un rapport de formation qui ne montre que des réussites ne convainc personne. Voici les règles qui encadrent les nôtres.</p>
+        </div>
+        <ul class="rules" data-reveal>
+          <li><h3>Les mêmes personnes, avec et sans IA</h3><p>À la fin du parcours, chaque participant mesuré réalise deux tâches équivalentes, l’une avec l’IA, l’autre sans. Le gain se calcule personne par personne.</p></li>
+          <li><h3>Une notation à l’aveugle, par vos responsables</h3><p>La qualité est notée par vos propres responsables, sans savoir quelles réponses ont été faites avec l’IA. Un second correcteur revoit au moins une réponse sur cinq.</p></li>
+          <li><h3>Des groupes, jamais des individus</h3><p>Les rapports ne montrent que des groupes d’au moins cinq personnes. Les résultats ne servent jamais à évaluer un collaborateur.</p></li>
+          <li><h3>Les limites écrites dans le rapport</h3><p>Chaque rapport dit ce que le résultat ne prouve pas&#8239;: petit échantillon, conditions de test, effet de nouveauté. Un gain nul ou négatif y figure comme les autres.</p></li>
+          <li><h3>Le solde payé à la remise du rapport</h3><p>Vous réglez la moitié à la signature et l’autre moitié à la remise du premier rapport, et non à la dernière séance.</p></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="hairline"></div></div>
+
+  <!-- Les programmes -->
+  <section class="sec" id="programmes" aria-labelledby="programmes-title">
+    <div class="wrap grid">
+      <p class="label sec-label" data-reveal>Les programmes</p>
+      <div class="sec-body">
+        <div class="sec-head" data-reveal style="--i:1">
+          <h2 id="programmes-title">Un briefing pour la direction, trois parcours pour les équipes.</h2>
+          <p class="lead">Nous recommandons de commencer par le Briefing Direction, puis de lancer un parcours Fondamentaux avec une première équipe. Un test de positionnement de 20&nbsp;minutes oriente chaque collaborateur vers le bon parcours.</p>
+        </div>
+        <div class="progs">
+          <article class="prog" data-reveal aria-labelledby="prog-1">
+            <div class="prog-id">
+              <h3 id="prog-1">Briefing Direction</h3>
+              <p class="meta">Pour votre comité de direction&nbsp;· une <span class="nw">demi-journée</span>&nbsp;· jusqu’à 15&nbsp;personnes</p>
+            </div>
+            <div class="prog-main">
+              <p class="prog-lead">Votre comité décide où l’IA sera utile chez vous, sous quelles règles et sous la responsabilité de qui, avec un plan à 90&nbsp;jours.</p>
+              <details class="disclosure">
+                <summary><span>Le déroulé de la <span class="nw">demi-journée</span></span></summary>
+                <ol class="numbered">
+                  <li><span>Ce que l’<strong>IA</strong> sait faire, et ses limites</span></li>
+                  <li><span>Dix cas d’usage de votre secteur</span></li>
+                  <li><span>Risques et gouvernance</span></li>
+                  <li><span>Votre politique d’usage de l’<strong>IA</strong></span></li>
+                  <li><span>La méthode de mesure</span></li>
+                  <li><span>Décisions et plan à 90&nbsp;jours</span></li>
+                </ol>
+              </details>
+            </div>
+          </article>
+          <article class="prog" data-reveal aria-labelledby="prog-2">
+            <div class="prog-id">
+              <h3 id="prog-2">Parcours Fondamentaux</h3>
+              <p class="meta">Pour tous les collaborateurs&nbsp;· <span class="nw">6&nbsp;demi-journées</span>&nbsp;· 12&nbsp;à&nbsp;20&nbsp;participants</p>
+            </div>
+            <div class="prog-main">
+              <p class="prog-lead">Chaque collaborateur repart avec l’une de ses tâches récurrentes refaite avec l’IA, sans exposer vos données, et vous mesurez ce que cela change pour vos équipes.</p>
+              <details class="disclosure">
+                <summary><span>Les 6&nbsp;séances</span></summary>
+                <ol class="numbered">
+                  <li><span>Les <strong>assistants d’IA</strong> et vos données</span></li>
+                  <li><span>Rédiger des demandes efficaces</span></li>
+                  <li><span>Écrire et communiquer</span></li>
+                  <li><span>Résumés et comptes rendus</span></li>
+                  <li><span>Tableurs et données</span></li>
+                  <li><span>Usage responsable et bilan</span></li>
+                </ol>
+              </details>
+            </div>
+          </article>
+          <article class="prog" data-reveal aria-labelledby="prog-3">
+            <div class="prog-id">
+              <h3 id="prog-3">Parcours Avancé</h3>
+              <p class="meta">Pour les utilisateurs confirmés, analystes et managers&nbsp;· <span class="nw">8&nbsp;demi-journées</span>&nbsp;· 8&nbsp;à&nbsp;15&nbsp;participants</p>
+            </div>
+            <div class="prog-main">
+              <p class="prog-lead">Chaque équipe automatise l’un de ses flux de travail, avec ses contrôles, puis présente à votre direction le gain mesuré et un plan pour le déployer.</p>
+              <details class="disclosure">
+                <summary><span>Les 8&nbsp;séances</span></summary>
+                <ol class="numbered">
+                  <li><span>Choisir et évaluer un <strong>modèle</strong></span></li>
+                  <li><span>Un <strong>assistant</strong> sur vos documents</span></li>
+                  <li><span>Relier l’<strong>IA</strong> à vos outils</span></li>
+                  <li><span>Recherche et analyse</span></li>
+                  <li><span>Automatiser un flux de travail</span></li>
+                  <li><span>Qualité, contrôle et risques</span></li>
+                  <li><span>Atelier projet&#8239;: mesurer le gain</span></li>
+                  <li><span>Présentation à la direction</span></li>
+                </ol>
+              </details>
+            </div>
+          </article>
+          <article class="prog" data-reveal aria-labelledby="prog-4">
+            <div class="prog-id">
+              <h3 id="prog-4">Parcours Développeurs</h3>
+              <p class="meta">Pour vos développeurs, équipes data et IT&nbsp;· <span class="nw">10&nbsp;demi-journées</span>&nbsp;· 6&nbsp;à&nbsp;12&nbsp;participants&nbsp;· en Python</p>
+            </div>
+            <div class="prog-main">
+              <p class="prog-lead">Vos développeurs livrent, sur un cas d’usage choisi avec votre DSI, un prototype d’IA testé et sécurisé, avec le dossier qui permet de décider de sa mise en production.</p>
+              <details class="disclosure">
+                <summary><span>Les 10&nbsp;séances</span></summary>
+                <ol class="numbered">
+                  <li><span><strong>Modèles</strong> et coûts</span></li>
+                  <li><span><strong>API</strong> et <strong>SDK</strong></span></li>
+                  <li><span>Recherche documentaire (<strong>RAG</strong>)</span></li>
+                  <li><span>Serveurs <strong>MCP</strong></span></li>
+                  <li><span><strong>Agents</strong> sous contrôle</span></li>
+                  <li><span>Développement assisté par l’<strong>IA</strong></span></li>
+                  <li><span>Atelier projet&#8239;: le prototype</span></li>
+                  <li><span>Évaluation et sécurité</span></li>
+                  <li><span>Atelier projet&#8239;: mesure finale</span></li>
+                  <li><span>Démonstration à la DSI</span></li>
+                </ol>
+              </details>
+            </div>
+          </article>
+        </div>
+        <div class="checklist" data-reveal>
+          <h3>Inclus dans chaque parcours</h3>
+          <ul>
+            <li>L’atelier de cadrage, et la vérification de vos outils avec votre DSI.</li>
+            <li>Le test de positionnement, et un test en début et en fin de parcours.</li>
+            <li>Les trois mesures et les deux rapports.</li>
+            <li>Les supports, les certificats et la bibliothèque de demandes de votre équipe.</li>
+            <li>Un kit pour les managers des participants, et trois mois de séances de suivi.</li>
+            <li>Un environnement de laboratoire, si vous n’avez pas encore d’outil d’IA approuvé.</li>
+          </ul>
+          <p class="body">Le prix est fixé par cohorte, selon le parcours et le nombre de participants. Il figure dans une proposition écrite, avec le calendrier et le temps demandé à chacun.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="hairline"></div></div>
+
+  <!-- En séance -->
+  <section class="sec" id="seance" aria-labelledby="seance-title">
+    <div class="wrap grid">
+      <p class="label sec-label" data-reveal>En séance</p>
+      <div class="sec-body">
+        <div class="sec-head" data-reveal style="--i:1">
+          <h2 id="seance-title">Une matinée type, de 9&nbsp;h à 12&nbsp;h&nbsp;30.</h2>
+          <p class="body">Chaque séance alterne des explications courtes, une démonstration et des exercices. Les exercices se déroulent dans quatre entreprises fictives construites pour l’occasion&#8239;: un groupe de bancassurance, un centre de relation client, une société de services informatiques et une entreprise de distribution. Entre deux séances, chacun applique la méthode à ses propres tâches, dans les outils que votre entreprise autorise.</p>
+        </div>
+        <figure class="morning" data-reveal>
+          <figcaption class="label">Séance&nbsp;1 du parcours Fondamentaux</figcaption>
+          <div class="morning-axis" aria-hidden="true"><span style="left:0">9&nbsp;h</span><span style="left:28.571%">10&nbsp;h</span><span style="left:57.143%">11&nbsp;h</span><span class="ax-minor" style="left:85.714%">12&nbsp;h</span><span style="left:100%">12&nbsp;h&nbsp;30</span></div>
+          <ol class="morning-bar" aria-hidden="true">
+            <li class="m-autre" style="--m:15" title="9 h 00 · Accueil et objectifs · 15 min"></li>
+            <li class="m-expli" style="--m:15" title="9 h 15 · Explication · 15 min"></li>
+            <li class="m-expli" style="--m:10" title="9 h 30 · Démonstration · 10 min"></li>
+            <li class="m-pratique" style="--m:35" title="9 h 40 · Exercice · 35 min"></li>
+            <li class="m-autre" style="--m:15" title="10 h 15 · Pause · 15 min"></li>
+            <li class="m-expli" style="--m:15" title="10 h 30 · Explication · 15 min"></li>
+            <li class="m-pratique" style="--m:40" title="10 h 45 · Exercice · 40 min"></li>
+            <li class="m-pratique" style="--m:15" title="11 h 25 · Relecture en binômes · 15 min"></li>
+            <li class="m-expli" style="--m:10" title="11 h 40 · Mise en commun · 10 min"></li>
+            <li class="m-pratique" style="--m:15" title="11 h 50 · Quiz · 15 min"></li>
+            <li class="m-pratique" style="--m:15" title="12 h 05 · Projet personnel · 15 min"></li>
+            <li class="m-autre" style="--m:10" title="12 h 20 · Exercice à faire et clôture · 10 min"></li>
+          </ol>
+          <ul class="morning-legend">
+            <li><span class="sw m-pratique" aria-hidden="true"></span>Pratique&#8239;: 120&nbsp;minutes</li>
+            <li><span class="sw m-expli" aria-hidden="true"></span>Explications et démonstrations&#8239;: 50&nbsp;minutes</li>
+            <li><span class="sw m-autre" aria-hidden="true"></span>Accueil, pause et clôture&#8239;: 40&nbsp;minutes</li>
+          </ul>
+          <details class="disclosure">
+            <summary><span>Le déroulé de la matinée</span></summary>
+            <ol class="schedule">
+              <li><span class="t">9&nbsp;h&nbsp;00</span><span>Accueil, objectifs et règles sur les données</span><span class="d">15&nbsp;min</span></li>
+              <li><span class="t">9&nbsp;h&nbsp;15</span><span>Comment un assistant d’IA produit une réponse</span><span class="d">15&nbsp;min</span></li>
+              <li><span class="t">9&nbsp;h&nbsp;30</span><span>Démonstration&#8239;: une réponse inventée, en direct</span><span class="d">10&nbsp;min</span></li>
+              <li><span class="t">9&nbsp;h&nbsp;40</span><span>Exercice&#8239;: repérer une réponse inventée et la corriger avec des sources</span><span class="d">35&nbsp;min</span></li>
+              <li><span class="t">10&nbsp;h&nbsp;15</span><span>Pause</span><span class="d">15&nbsp;min</span></li>
+              <li><span class="t">10&nbsp;h&nbsp;30</span><span>Les familles d’outils et le code couleur des données</span><span class="d">15&nbsp;min</span></li>
+              <li><span class="t">10&nbsp;h&nbsp;45</span><span>Exercice&#8239;: classer ses tâches et ses données, choisir l’outil</span><span class="d">40&nbsp;min</span></li>
+              <li><span class="t">11&nbsp;h&nbsp;25</span><span>Relecture des deux exercices en binômes</span><span class="d">15&nbsp;min</span></li>
+              <li><span class="t">11&nbsp;h&nbsp;40</span><span>Mise en commun</span><span class="d">10&nbsp;min</span></li>
+              <li><span class="t">11&nbsp;h&nbsp;50</span><span>Quiz</span><span class="d">15&nbsp;min</span></li>
+              <li><span class="t">12&nbsp;h&nbsp;05</span><span>Projet personnel&#8239;: choisir la tâche à refaire avec l’IA</span><span class="d">15&nbsp;min</span></li>
+              <li><span class="t">12&nbsp;h&nbsp;20</span><span>Exercice à faire d’ici la séance suivante, clôture</span><span class="d">10&nbsp;min</span></li>
+            </ol>
+          </details>
+        </figure>
+        <div class="checklist" data-reveal>
+          <h3>Ce que chaque participant garde</h3>
+          <ul>
+            <li>Sa bibliothèque de demandes réutilisables.</li>
+            <li>Sa carte outil&#8239;: les outils autorisés chez vous, par couleur de données.</li>
+            <li>Une de ses tâches refaite avec l’IA, chronométrée avant et après.</li>
+            <li>Ses résultats, remis sous pli fermé, et un certificat de réussite. Ce n’est ni un diplôme d’État, ni une certification reconnue par l’État.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="hairline"></div></div>
+
+  <!-- Secteurs -->
+  <section class="sec" id="secteurs" aria-labelledby="secteurs-title">
+    <div class="wrap grid">
+      <p class="label sec-label" data-reveal>Secteurs</p>
+      <div class="sec-body">
+        <div class="sec-head" data-reveal style="--i:1">
+          <h2 id="secteurs-title">Des exercices modelés sur votre métier.</h2>
+          <p class="lead">Les exercices reproduisent les tâches de votre secteur. Les mesures portent ensuite sur les tâches réelles de vos équipes, choisies avec vous.</p>
+        </div>
+        <div class="sectors">
+          <div class="sector" data-reveal style="--i:0">
+            <h3>Relation client et offshoring</h3>
+            <ul>
+              <li>Réponses aux réclamations écrites</li>
+              <li>Comptes rendus d’escalade</li>
+              <li>Synthèses des contrôles qualité</li>
+            </ul>
+            <div class="example"><p class="label">Exemple de mesure</p><p>Le temps de rédaction d’une réponse à une réclamation écrite, et sa qualité notée sur votre grille qualité.</p></div>
+          </div>
+          <div class="sector" data-reveal style="--i:1">
+            <h3>Services IT</h3>
+            <ul>
+              <li>Correctifs et petites évolutions</li>
+              <li>Revues de code</li>
+              <li>Documentation technique</li>
+            </ul>
+            <div class="example"><p class="label">Exemple de mesure</p><p>Le temps pour livrer un correctif, avec et sans assistant de code, les tests réussis et la note de revue de code.</p></div>
+          </div>
+          <div class="sector" data-reveal style="--i:2">
+            <h3>Banque et assurance</h3>
+            <ul>
+              <li>Synthèses de dossiers de crédit</li>
+              <li>Réponses aux réclamations clients</li>
+              <li>Synthèses de déclarations de sinistre</li>
+            </ul>
+            <div class="example"><p class="label">Exemple de mesure</p><p>Le temps de synthèse d’un dossier de crédit préparé pour l’exercice, et son exactitude vérifiée par un de vos analystes.</p></div>
+          </div>
+        </div>
+        <p class="body" data-reveal>Le parcours Fondamentaux s’adresse aussi aux fonctions support de toute entreprise&#8239;: RH, finance, ventes.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="hairline"></div></div>
+
+  <!-- Vos données -->
+  <section class="sec" id="donnees" aria-labelledby="donnees-title">
+    <div class="wrap grid">
+      <p class="label sec-label" data-reveal>Vos données</p>
+      <div class="sec-body">
+        <div class="sec-head" data-reveal style="--i:1">
+          <h2 id="donnees-title">Vos données restent les vôtres.</h2>
+          <p class="lead">Une règle simple, appliquée dès la première séance et dans chaque exercice.</p>
+        </div>
+        <ul class="lights">
+          <li class="light light--vert" data-reveal style="--i:0">
+            <h3><span class="dot dot--vert" aria-hidden="true"></span>Vert</h3>
+            <p>Public ou non sensible.</p>
+          </li>
+          <li class="light light--ambre" data-reveal style="--i:1">
+            <h3><span class="dot dot--ambre" aria-hidden="true"></span>Ambre</h3>
+            <p>Interne&#8239;: uniquement dans les outils approuvés par votre entreprise.</p>
+          </li>
+          <li class="light light--rouge" data-reveal style="--i:2">
+            <h3><span class="dot dot--rouge" aria-hidden="true"></span>Rouge</h3>
+            <p>Personnel, confidentiel ou réglementé&#8239;: jamais sans autorisation explicite.</p>
+          </li>
+        </ul>
+        <ul class="commitments" data-reveal>
+          <li><p class="body">Aucune donnée de votre entreprise dans nos exercices.</p></li>
+          <li><p class="body">Jamais de compte personnel pour une tâche de travail.</p></li>
+          <li><p class="body">Chaque participant passe un test pratique sur les données&#8239;; ceux qui échouent suivent un module de sécurité avant la première séance. La liste des attestations est remise à votre conformité sur demande.</p></li>
+          <li><p class="body">Les formulaires de mesure sont hébergés par défaut dans votre propre environnement, Microsoft&nbsp;365 ou Google Workspace.</p></li>
+          <li><p class="body">Seul votre coordinateur RH peut relier un résultat à un nom, et la table de correspondance est détruite après le second rapport.</p></li>
+          <li><p class="body">Les données de mesure ne servent jamais à l’évaluation individuelle&#8239;: les rapports ne montrent que des groupes de cinq personnes au moins.</p></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="hairline"></div></div>
+
+  <!-- Les fondateurs -->
+  <section class="sec" id="fondateurs" aria-labelledby="fondateurs-title">
+    <div class="wrap grid">
+      <p class="label sec-label" data-reveal>Les fondateurs</p>
+      <div class="sec-body">
+        <div class="sec-head" data-reveal style="--i:1">
+          <h2 id="fondateurs-title">Les fondateurs animent eux-mêmes les séances.</h2>
+          <p class="lead">trainin.ma est une jeune entreprise de Rabat. Nos premières cohortes démarrent en 2027&#8239;: vous travaillerez directement avec nous deux.</p>
+        </div>
+        <div class="founders">
+          <figure class="founders-photo" data-reveal>
+            <img src="img/fondateurs.webp" alt="Mohammed Riyad El Azhari et Oussama Ma-El-Ainin." width="1056" height="792" loading="lazy" decoding="async">
+          </figure>
+          <article class="founder" data-reveal style="--i:0">
+            <div class="founder-head">
+              <h3>Mohammed Riyad El&nbsp;Azhari</h3>
+              <p class="founder-job">Data scientist</p>
+            </div>
+            <p class="role">Parcours Développeurs et qualité technique de tous les parcours</p>
+            <p class="label">Formation</p>
+            <ul class="degrees">
+              <li>
+                <img class="deg-logo" src="img/logos/tu-dortmund.svg" style="--logo-h:38px" alt="" width="442" height="88">
+                <p class="deg-title">Master en science des données</p>
+                <p class="deg-school">TU Dortmund&nbsp;· Allemagne</p>
+              </li>
+              <li>
+                <img class="deg-logo" src="img/logos/uottawa.svg" style="--logo-h:46px" alt="" width="222" height="188">
+                <p class="deg-title">Bachelor en génie logiciel</p>
+                <p class="deg-school">Université d’Ottawa&nbsp;· Canada</p>
+              </li>
+            </ul>
+            <a class="link founder-link" href="https://www.linkedin.com/in/mohammed-riyad-el-azhari-2a53601a9/" target="_blank" rel="noopener">Profil LinkedIn&nbsp;→</a>
+          </article>
+          <article class="founder" data-reveal style="--i:1">
+            <div class="founder-head">
+              <h3>Oussama <span class="nw">Ma-El-Ainin</span></h3>
+              <p class="founder-job">Product manager, fondateur d’une application</p>
+            </div>
+            <p class="role">Relation clients, Briefing Direction, parcours Fondamentaux et mesures&nbsp;· Rabat</p>
+            <p class="label">Formation</p>
+            <ul class="degrees">
+              <li>
+                <img class="deg-logo" src="img/logos/polimi.svg" style="--logo-h:30px" alt="" width="85" height="24">
+                <p class="deg-title">Master en développement de produit, en cours</p>
+                <p class="deg-school">Politecnico di Milano&nbsp;· Italie</p>
+              </li>
+              <li>
+                <img class="deg-logo" src="img/logos/sabanci.svg" style="--logo-h:36px" alt="" width="139" height="60">
+                <p class="deg-title">Bachelor en mécatronique</p>
+                <p class="deg-school">Université Sabanci&nbsp;· Turquie</p>
+              </li>
+            </ul>
+            <a class="link founder-link" href="https://www.linkedin.com/in/oussama-mael-2ab723190/" target="_blank" rel="noopener">Profil LinkedIn&nbsp;→</a>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Questions -->
+  <section class="sec band--deep" id="questions" aria-labelledby="questions-title">
+    <div class="wrap grid">
+      <p class="label sec-label" data-reveal>Questions</p>
+      <div class="sec-body">
+        <div class="sec-head" data-reveal style="--i:1">
+          <h2 id="questions-title">Avant de prendre rendez-vous.</h2>
+        </div>
+        <div class="faq" data-reveal>
+          <div class="faq-item">
+            <h3 class="faq-h"><button class="faq-q" type="button" id="faq-q-1" aria-expanded="false" aria-controls="faq-a-1" data-faq>Vous démarrez. Pourquoi serions-nous parmi vos premiers clients&#8239;?<span class="faq-icon" aria-hidden="true"></span></button></h3>
+            <div class="faq-a" id="faq-a-1" role="region" aria-labelledby="faq-q-1"><div>
+              <p>C’est vrai&#8239;: nos premières cohortes démarrent en 2027, et nous n’avons pas encore de références à vous montrer. C’est pourquoi tout est conçu pour que vous puissiez vérifier vous-mêmes&#8239;: la qualité est notée à l’aveugle par vos propres responsables, le rapport est signé par votre sponsor, et le solde de la facture n’est dû qu’à sa remise. Le contenu de chaque séance est détaillé dans la partie Programmes.</p>
+            </div></div>
+          </div>
+          <div class="faq-item">
+            <h3 class="faq-h"><button class="faq-q" type="button" id="faq-q-2" aria-expanded="false" aria-controls="faq-a-2" data-faq>Combien coûte un parcours&#8239;?<span class="faq-icon" aria-hidden="true"></span></button></h3>
+            <div class="faq-a" id="faq-a-2" role="region" aria-labelledby="faq-q-2"><div>
+              <p>Le prix est fixé par cohorte, selon le parcours et le nombre de participants. Après l’échange de 45&nbsp;minutes, nous vous envoyons une proposition écrite qui précise le périmètre, le calendrier, le temps demandé à chacun et le prix. Vous réglez la moitié à la signature et le solde à la remise du premier rapport.</p>
+            </div></div>
+          </div>
+          <div class="faq-item">
+            <h3 class="faq-h"><button class="faq-q" type="button" id="faq-q-3" aria-expanded="false" aria-controls="faq-a-3" data-faq>Faut-il déjà avoir un outil d’IA autorisé, ou acheter des licences&#8239;?<span class="faq-icon" aria-hidden="true"></span></button></h3>
+            <div class="faq-a" id="faq-a-3" role="region" aria-labelledby="faq-q-3"><div>
+              <p>Non. Si votre entreprise a déjà approuvé un outil, comme Microsoft&nbsp;365 Copilot ou Google Workspace avec Gemini, nous travaillons dedans. Sinon, vos équipes travaillent dans notre environnement de laboratoire, sur des données non sensibles uniquement. Nous vérifions tout cela avec votre DSI pendant l’atelier de cadrage. Si aucune de ces deux solutions ne vous convient, nous ne lançons pas de cohorte&#8239;: nous vous aidons d’abord à faire approuver un outil.</p>
+            </div></div>
+          </div>
+          <div class="faq-item">
+            <h3 class="faq-h"><button class="faq-q" type="button" id="faq-q-4" aria-expanded="false" aria-controls="faq-a-4" data-faq>Nous ne pouvons pas retirer nos équipes de la production pendant des semaines.<span class="faq-icon" aria-hidden="true"></span></button></h3>
+            <div class="faq-a" id="faq-a-4" role="region" aria-labelledby="faq-q-4"><div>
+              <p>C’est un vrai coût, et nous le chiffrons avant de signer. Le parcours Fondamentaux représente six matinées, du lundi au jeudi, réparties sur quatre à six semaines, plus <span class="nw">30&nbsp;à&nbsp;45&nbsp;minutes</span> de mise en pratique entre les séances, sur des tâches que vos collaborateurs font de toute façon. Votre proposition indique le temps demandé à chacun, mesures comprises, et nous fixons le calendrier avec vous, en dehors de vos pics d’activité.</p>
+            </div></div>
+          </div>
+          <div class="faq-item">
+            <h3 class="faq-h"><button class="faq-q" type="button" id="faq-q-5" aria-expanded="false" aria-controls="faq-a-5" data-faq>Où, quand et en quelle langue ont lieu les séances&#8239;?<span class="faq-icon" aria-hidden="true"></span></button></h3>
+            <div class="faq-a" id="faq-a-5" role="region" aria-labelledby="faq-q-5"><div>
+              <p>Dans vos locaux, le matin de 9&nbsp;h à 12&nbsp;h&nbsp;30, du lundi au jeudi. Il n’y a pas de séance le vendredi, ni pendant le Ramadan. Les séances sont en français&#8239;; dans le parcours Fondamentaux, nous passons à la darija quand cela aide. Le parcours Développeurs s’appuie sur des supports techniques en anglais.</p>
+            </div></div>
+          </div>
+          <div class="faq-item">
+            <h3 class="faq-h"><button class="faq-q" type="button" id="faq-q-6" aria-expanded="false" aria-controls="faq-a-6" data-faq>Nos collaborateurs n’ont pas tous le même niveau.<span class="faq-icon" aria-hidden="true"></span></button></h3>
+            <div class="faq-a" id="faq-a-6" role="region" aria-labelledby="faq-q-6"><div>
+              <p>Un test de positionnement de 20&nbsp;minutes oriente chacun vers le bon parcours&#8239;; les plus avancés peuvent entrer directement dans le parcours Avancé. Chaque participant passe aussi un test pratique sur les données&#8239;: ceux qui le ratent suivent un module de sécurité avant la première séance.</p>
+            </div></div>
+          </div>
+          <div class="faq-item">
+            <h3 class="faq-h"><button class="faq-q" type="button" id="faq-q-7" aria-expanded="false" aria-controls="faq-a-7" data-faq>Peut-on financer la formation avec les CSF&#8239;?<span class="faq-icon" aria-hidden="true"></span></button></h3>
+            <div class="faq-a" id="faq-a-7" role="region" aria-labelledby="faq-q-7"><div>
+              <p>Nous ne promettons aucun remboursement&#8239;: le dossier CSF reste le vôtre. Nos premières cohortes se déroulent hors CSF&#8239;; pour les suivantes, nous vous dirons avant signature ce que nous pouvons fournir pour votre dossier.</p>
+            </div></div>
+          </div>
+          <div class="faq-item">
+            <h3 class="faq-h"><button class="faq-q" type="button" id="faq-q-8" aria-expanded="false" aria-controls="faq-a-8" data-faq>Nos équipes ont déjà suivi une formation ChatGPT, et il existe des formations en ligne gratuites. Pourquoi payer davantage&#8239;?<span class="faq-icon" aria-hidden="true"></span></button></h3>
+            <div class="faq-a" id="faq-a-8" role="region" aria-labelledby="faq-q-8"><div>
+              <p>Les formations en ligne apprennent à se servir d’un outil, et elles le font bien. Ce que vous payez ici est différent&#8239;: des séances en présentiel, des exercices modelés sur les tâches de votre secteur puis appliqués au travail réel de chacun, et une mesure du temps et de la qualité avant, à la fin et 90&nbsp;jours après. Si vous n’avez pas besoin de cette preuve, une formation en ligne vous coûtera moins cher.</p>
+            </div></div>
+          </div>
+          <div class="faq-item">
+            <h3 class="faq-h"><button class="faq-q" type="button" id="faq-q-9" aria-expanded="false" aria-controls="faq-a-9" data-faq>Une fois la formation terminée, chacun reprendra ses habitudes.<span class="faq-icon" aria-hidden="true"></span></button></h3>
+            <div class="faq-a" id="faq-a-9" role="region" aria-labelledby="faq-q-9"><div>
+              <p>C’est le principal risque de toute formation, et c’est pour cela que nous mesurons à nouveau 90&nbsp;jours après la dernière séance. Entre-temps, chaque participant a refait l’une de ses propres tâches avec l’IA, son manager a été préparé à en parler avec lui, et une séance de suivi a lieu chaque mois pendant trois mois. Le second rapport dit ce qui est resté, même si c’est peu.</p>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<div class="ink">
+  <!-- Contact -->
+  <section class="contact" id="contact" aria-labelledby="contact-title">
+    <div class="wrap grid contact-grid">
+      <div class="contact-intro" data-reveal>
+        <h2 id="contact-title">Commençons par un échange de 45&nbsp;minutes.</h2>
+        <p class="lead">Avec un fondateur, gratuit et sans engagement. Vous pouvez venir avec trois ou quatre décideurs.</p>
+        <ol class="next-steps">
+          <li><span>Vous remplissez le formulaire, ou vous nous écrivez directement.</span></li>
+          <li><span>Oussama vous répond sous un jour ouvré pour fixer un créneau.</span></li>
+          <li><span>En 45&nbsp;minutes, nous parlons de vos priorités, de vos outils et de vos contraintes, et nous repérons les tâches où l’IA peut faire gagner du temps à vos équipes.</span></li>
+          <li><span>Si vous le souhaitez, nous vous envoyons ensuite une proposition écrite.</span></li>
+        </ol>
+        <p class="contact-small">Pour écrire directement&#8239;: <span class="todo">[adresse e-mail]</span>&nbsp;· <span class="todo">[téléphone ou WhatsApp]</span></p>
+        <p class="contact-small">Pour une cohorte en janvier&nbsp;2027, avant le Ramadan, la décision se prend en novembre.</p>
+      </div>
+      <form class="contact-form" id="contact-form" data-endpoint="" novalidate data-reveal style="--i:1">
+        <div class="field">
+          <label for="f-nom">Nom et prénom</label>
+          <input id="f-nom" name="nom" type="text" autocomplete="name" required aria-describedby="f-nom-err">
+          <p class="field-err" id="f-nom-err"></p>
+        </div>
+        <div class="field">
+          <label for="f-fonction">Fonction</label>
+          <input id="f-fonction" name="fonction" type="text" autocomplete="organization-title" required aria-describedby="f-fonction-err">
+          <p class="field-err" id="f-fonction-err"></p>
+        </div>
+        <div class="field">
+          <label for="f-entreprise">Entreprise</label>
+          <input id="f-entreprise" name="entreprise" type="text" autocomplete="organization" required aria-describedby="f-entreprise-err">
+          <p class="field-err" id="f-entreprise-err"></p>
+        </div>
+        <div class="field">
+          <label for="f-email">E-mail professionnel</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="f-email-err">
+          <p class="field-err" id="f-email-err"></p>
+        </div>
+        <div class="field">
+          <label for="f-tel">Téléphone <span class="opt">(facultatif)</span></label>
+          <input id="f-tel" name="telephone" type="tel" autocomplete="tel">
+        </div>
+        <div class="field">
+          <label for="f-objet">Votre demande</label>
+          <span class="select"><select id="f-objet" name="objet">
+            <option>Un échange de 45&nbsp;minutes</option>
+            <option>Le Briefing Direction</option>
+            <option>Un parcours pour une équipe</option>
+            <option>Une autre question</option>
+          </select></span>
+        </div>
+        <div class="field field--wide">
+          <label for="f-taille">Nombre de personnes à former <span class="opt">(estimation)</span></label>
+          <span class="select"><select id="f-taille" name="taille">
+            <option value="">Je ne sais pas encore</option>
+            <option>Moins de 15</option>
+            <option>15&nbsp;à&nbsp;50</option>
+            <option>50&nbsp;à&nbsp;200</option>
+            <option>Plus de 200</option>
+          </select></span>
+        </div>
+        <div class="field field--wide">
+          <label for="f-message">Message <span class="opt">(facultatif)</span></label>
+          <textarea id="f-message" name="message" rows="4"></textarea>
+        </div>
+        <p class="form-privacy">Vos coordonnées servent uniquement à répondre à votre demande. Elles ne sont ni partagées, ni utilisées pour de la prospection.</p>
+        <div class="form-actions"><button class="btn btn--primary" type="submit">Envoyer la demande</button></div>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-bar">
+        <a class="wordmark" href="#">trainin.ma</a>
+        <nav class="footer-nav" aria-label="Pied de page">
+          <ul>
+            <li><a href="#methode">Méthode</a></li>
+            <li><a href="#programmes">Programmes</a></li>
+            <li><a href="#seance">En séance</a></li>
+            <li><a href="#secteurs">Secteurs</a></li>
+            <li><a href="#donnees">Vos données</a></li>
+            <li><a href="#fondateurs">Fondateurs</a></li>
+            <li><a href="#questions">Questions</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+        <!-- Once the company is registered: trainin.ma SARL · Rabat · RC … · ICE … · IF … · Déclaration CNDP n° … , plus links to the legal notice and privacy policy pages. -->
+        <p class="legal">trainin.ma&nbsp;· Rabat</p>
+      </div>
+    </div>
+  </footer>
+</div>
+</div>
+
+<script>
+(function(){
+  var root=document.documentElement;
+
+  var header=document.querySelector("[data-header]");
+  function onScroll(){header.classList.toggle("is-scrolled",window.scrollY>4)}
+  window.addEventListener("scroll",onScroll,{passive:true});
+  onScroll();
+
+  try{
+    if(root.classList.contains("rv")){
+      var io=new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){e.target.classList.add("is-in");io.unobserve(e.target)}
+        });
+      },{rootMargin:"0px 0px -6% 0px",threshold:0});
+      document.querySelectorAll("[data-reveal]").forEach(function(el){io.observe(el)});
+    }
+  }catch(err){root.classList.remove("rv")}
+
+  document.querySelectorAll("[data-faq]").forEach(function(btn){
+    btn.addEventListener("click",function(){
+      var open=btn.getAttribute("aria-expanded")==="true";
+      btn.setAttribute("aria-expanded",String(!open));
+      document.getElementById(btn.getAttribute("aria-controls")).classList.toggle("is-open",!open);
+    });
+  });
+
+  var toggle=document.querySelector("[data-menu-toggle]");
+  var panel=document.getElementById("menu");
+  function setMenu(open){
+    toggle.setAttribute("aria-expanded",String(open));
+    toggle.textContent=open?"Fermer":"Menu";
+    panel.hidden=!open;
+    root.classList.toggle("menu-open",open);
+    if(open){var first=panel.querySelector("a");if(first){first.focus()}}
+  }
+  toggle.addEventListener("click",function(){setMenu(toggle.getAttribute("aria-expanded")!=="true")});
+  panel.addEventListener("click",function(e){if(e.target.closest("a")){setMenu(false)}});
+  document.addEventListener("keydown",function(e){
+    if(e.key==="Escape"&&toggle.getAttribute("aria-expanded")==="true"){setMenu(false);toggle.focus()}
+  });
+  var desktop=window.matchMedia("(min-width: 1024px)");
+  if(desktop.addEventListener){desktop.addEventListener("change",function(m){if(m.matches){setMenu(false)}})}
+
+  // Contact form: checks the fields, then posts to data-endpoint once one is set.
+  var form=document.getElementById("contact-form");
+  if(form){
+    var status=form.querySelector(".form-status");
+    form.addEventListener("submit",function(e){
+      e.preventDefault();
+      var first=null;
+      form.querySelectorAll("[required]").forEach(function(f){
+        var empty=!f.value.trim();
+        var bad=empty||(f.type==="email"&&!f.checkValidity());
+        var err=document.getElementById(f.id+"-err");
+        f.setAttribute("aria-invalid",bad?"true":"false");
+        if(err){err.textContent=bad?(empty?"Ce champ est requis.":"Cette adresse e-mail semble incomplète."):""}
+        if(bad&&!first){first=f}
+      });
+      if(first){status.textContent="Merci de compléter les champs signalés.";first.focus();return}
+      var endpoint=form.getAttribute("data-endpoint");
+      if(!endpoint){status.textContent="Ce formulaire n’est pas encore relié à une adresse de réception : il le sera avant la mise en ligne.";return}
+      var data={};new FormData(form).forEach(function(v,k){data[k]=v});
+      status.textContent="Envoi en cours…";
+      fetch(endpoint,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(data)})
+        .then(function(r){if(!r.ok){throw new Error(String(r.status))}status.textContent="Merci. Oussama vous répond sous un jour ouvré.";form.reset()})
+        .catch(function(){status.textContent="L’envoi n’a pas abouti. Écrivez-nous directement, à l’adresse indiquée sur cette page."});
+    });
+  }
+})();
+</script>
